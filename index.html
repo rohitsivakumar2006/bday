@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Birthday Greeting</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="style.css"/>
+</head>
+<body>
+ <div class="bg-image"></div>
+<div class="scene" id="scene">
+
+  <div class="envelope" id="env">
+    <div class="flap top"></div>
+    <div class="flap bottom"></div>
+    <div class="flap left"></div>
+    <div class="flap right"></div>
+    <div class="envelope-body"></div>
+    <div class="stamp">🎀</div>
+    <div class="hint" id="hint">👆 Click envelope to open</div>
+  </div>
+ 
+
+    <div class="scene">
+        </div>
+
+  <div class="letter" id="letter">
+  <div class="hearts">💝✨</div>
+  <h2>Happy Birthday ra Bangaram💖</h2>
+  <div class="hearts">
+    <img src="https://emojicdn.elk.sh/🫂?style=apple" alt="Hug" style="width: 50px; height: 50px; vertical-align: middle;">
+  </div>
+  <p>You are soo special to me✨</p>
+</div>
+
+</div>
+
+<div class="overlay" id="overlay" onclick="closeOverlay()">
+  <div class="a4sheet" id="a4sheet" onclick="event.stopPropagation()">
+    <button class="close-btn" onclick="closeOverlay()">✕</button>
+    <div class="a4-content">
+      <h1>Wishing You a Fabulous Birthday<br> Pallaviii...🎀</h1>
+      <br>
+      <p class="special"></p>
+      <p class="a4-msg">Dear Pallaviii...,
+<br>Ni puttina roju nikanna nak ekkuva ayipoyindhi 😍.Nuvvu unna prathi roju, prathi moment, prathi breath ki nenu chala thankful ga feel avuthunnanu. Ni gurinchi cheppatam ekkada nunchi modhalu pettamantav🤔?Ekkada nunchi cheppina thakkuvey😁 prathi moment lo na loneliness ni,happiness ni,sadness ni annitini vinnav nak thodu vunnav alanti ni bady nak special kakunda ela vuntadhi🤌,Ndhuku antey aarojey ga nuvvu vupiri thisukovatam modhalu pettav.Nuvvu oka nadhi lanti dhanivi ninnu aapali anukokudadhu ndhuku antey okapakka nunchi aapithey inkodhari ni ni anthala nuvvey vesukuntav,ni freedom ni nuvvey,sadhinchukuntav ni life ni nik nachinattu vunchukuntav.Ni presence oka nadhilaga prashantam ga vuntadhi,ni navvu nadhilo neerulaga swacham ga vuntadhi ni face nadhilo padey podhunnaputa suryakanthilaga ninduga vuntadhi.Evaru em anna ni paddathilo nuvvey correct ni manchithanam,amayakatvam,alochanalu anni show kosam kakunda manasulonchi vasthayi.Nidhi pure heart 🤍,Nilanti companion naku dhorakatam chala satisfyed experience asala😌. Once again Many More Happy returns of the day bujji bangaraluuu…🥰🫶🫂
+
+      </p>
+      <div class="a4-footer">
+    <div class="footer-text">
+        <p>Itlu Ni Waste Fellow🫶</p>
+        <p>~Rohit Siva Kumar❤️</p>
+    </div>
+</div>
+  </div>
+</div>
+
+<script>
+  let isOpen = false; // Step tracking kosam flag
+  const env     = document.getElementById('env');
+  const letter  = document.getElementById('letter');
+  const hint    = document.getElementById('hint');
+  const overlay = document.getElementById('overlay');
+  const a4sheet = document.getElementById('a4sheet');
+
+  // Envelope ni click chesinappudu
+  env.addEventListener('click', function() {
+    if (!isOpen) {
+      isOpen = true;
+      
+      // 1. Envelope open cheyyandi
+      env.classList.add('flaps-open');
+      
+      // 2. Konchem delay isthe flap open ayyaka letter vasthundi
+      setTimeout(() => {
+        env.classList.add('letter-up');
+        letter.classList.add('visible');
+        hint.textContent = ' Click letter for full page!';
+      }, 500);
+    }
+  });
+
+  // Letter ni click chesinappudu
+  letter.addEventListener('click', function(e) {
+    e.stopPropagation(); // Parent click trigger avvakunda
+    overlay.classList.add('show');
+    setTimeout(() => a4sheet.classList.add('grow'), 50);
+    hint.textContent = '';
+  });
+
+  // Close chesinappudu
+  function closeOverlay() {
+    a4sheet.classList.remove('grow');
+    setTimeout(() => {
+      overlay.classList.remove('show');
+      env.classList.remove('flaps-open', 'letter-up');
+      letter.classList.remove('visible');
+      isOpen = false;
+      hint.textContent = '👆 Click envelope to open';
+    }, 400);
+  }
+</script>
+
+</body>
+</html>
